@@ -1,0 +1,989 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.7">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000}
+    span.s1 {font: 12.0px Helvetica; -webkit-text-stroke: 0px #000000}
+    span.s2 {font-kerning: none}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="zh-TW"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;BBB的AI助理&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>:root {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--bg-color: #f8f9fa;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--card-bg: #ffffff;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--text-main: #2d3436;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--text-muted: #636e72;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--accent: #0984e3;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--border-color: #dfe6e9;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>/* Tag Colors */</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--work-bg: #e6fcf5; --work-text: #0ca678; /* 綠色 */</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--eng-bg: #fff9db; --eng-text: #f08c00; <span class="Apple-converted-space">  </span>/* 黃色 */</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--gym-bg: #fff4e6; --gym-text: #fd7e14; <span class="Apple-converted-space">  </span>/* 橘色 */</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--date-bg: #e7f5ff; --date-text: #1971c2; /* 藍色 */</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--plan-bg: #f8f0fc; --plan-text: #ae3ec9; /* 紫色 */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-family: var(--font-family);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: var(--bg-color);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: var(--text-main);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>flex-direction: column;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>line-height: 1.5;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.container {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>max-width: 850px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* --- Header &amp; Title --- */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>header {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 30px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>text-align: left;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.header-title {<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.8rem;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 800;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>letter-spacing: -0.5px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 15px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: linear-gradient(135deg, #2d3436 0%, #636e72 100%);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>-webkit-background-clip: text;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>-webkit-text-fill-color: transparent;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* --- Countdown Section --- */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.countdown-container {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>flex-wrap: wrap;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>gap: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 25px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.countdown-item {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: var(--card-bg);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid var(--border-color);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 10px 18px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 14px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>gap: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 4px 6px rgba(0,0,0,0.02);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transition: transform 0.2s;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>position: relative;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.countdown-item:hover { transform: translateY(-2px); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.countdown-label { font-size: 0.85rem; font-weight: 600; color: var(--text-muted); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.countdown-value { font-size: 1.1rem; font-weight: 700; color: var(--accent); }</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.countdown-actions {<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>gap: 8px;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-left: 5px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>opacity: 0.4;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transition: opacity 0.2s;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.countdown-item:hover .countdown-actions { opacity: 1; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.countdown-btn {<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 0.85rem;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>transition: transform 0.2s;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.countdown-btn:hover { transform: scale(1.15); }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.add-countdown-btn {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: #eee;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 1px dashed #ccc;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 8px 15px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 0.8rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #666;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>gap: 5px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* --- Tabs --- */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.tabs {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>gap: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 25px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>overflow-x: auto;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>scrollbar-width: none;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 4px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: #eee;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 16px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.tabs::-webkit-scrollbar { display: none; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.tab-btn {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: transparent;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: none;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 10px 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 0.95rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 600;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: var(--text-muted);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>white-space: nowrap;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transition: 0.2s;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.tab-btn.active {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: var(--card-bg);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: var(--text-main);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 4px 10px rgba(0,0,0,0.08);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.tab-content { display: none; animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.tab-content.active { display: block; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* --- Cards &amp; UI Elements --- */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.card {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: var(--card-bg);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid var(--border-color);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 24px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 10px 25px rgba(0,0,0,0.03);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.card h2 {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-top: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.2rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 700;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>gap: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.section-title {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 700;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: var(--text-main);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>gap: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>textarea, input[type="text"], input[type="number"], input[type="date"], input[type="time"], select {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 1.5px solid var(--border-color);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-family: inherit;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-sizing: border-box;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: #fff;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transition: border-color 0.2s;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>outline: none;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>textarea:focus, input:focus { border-color: var(--accent); }</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>button.action-btn {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: var(--text-main);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: none;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 12px 24px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 700;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transition: opacity 0.2s;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>button.action-btn:active { opacity: 0.8; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* --- Schedule UI --- */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.weekly-calendar {<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>gap: 10px;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 30px;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>overflow-x: auto;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 5px;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>scrollbar-width: none;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.day-card {<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>flex: 1;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>min-width: 55px;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: #fff;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 14px;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 15px 5px;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid var(--border-color);<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>flex-direction: column;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>gap: 8px;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 4px 6px rgba(0,0,0,0.02);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.day-card.active {<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: #2d3436;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-color: #2d3436;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #fff;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 10px 20px rgba(0,0,0,0.1);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.day-card.active .day-name, .day-card.active .day-date { color: #fff; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.day-card .day-name { font-size: 0.8rem; font-weight: 600; color: var(--text-muted); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.day-card .day-date { font-size: 1.2rem; font-weight: 800; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.day-card .dots { display: flex; gap: 4px; height: 6px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.dot { width: 6px; height: 6px; border-radius: 50%; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.dot.work { background: var(--work-text); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.dot.eng { background: var(--eng-text); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.dot.gym { background: var(--gym-text); }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.schedule-container {<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: #fff;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid var(--border-color);<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 20px;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>overflow: hidden;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 20px;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 4px 15px rgba(0,0,0,0.02);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.schedule-row {<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 20px;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-bottom: 1px solid #f8f9fa;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.schedule-row:last-child { border-bottom: none; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.time-col {<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 65px;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 0.9rem;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: var(--text-muted);<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 600;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>flex-shrink: 0;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.task-col {<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>flex: 1;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>gap: 12px;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.05rem;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 500;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.tag {<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 0.75rem;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 5px 12px;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 20px;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 700;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.tag.work { background: var(--work-bg); color: var(--work-text); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.tag.eng { background: var(--eng-bg); color: var(--eng-text); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.tag.gym { background: var(--gym-bg); color: var(--gym-text); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.tag.date { background: var(--date-bg); color: var(--date-text); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.tag.plan { background: var(--plan-bg); color: var(--plan-text); }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.ics-form { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; background: #f9f9f9; padding: 15px; border-radius: 12px; margin-top: 10px;}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.schedule-item { display:flex; justify-content:space-between; align-items:center; background:#fff; padding:12px 18px; border-radius:14px; margin-bottom:10px; border: 1px solid var(--border-color); box-shadow: 0 2px 4px rgba(0,0,0,0.01);}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* Note Items for WHV */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.note-item { display:flex; justify-content:space-between; align-items:center; background:#fff; padding:12px 18px; border-radius:14px; margin-bottom:10px; border: 1px solid var(--border-color); box-shadow: 0 2px 4px rgba(0,0,0,0.01);}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.note-item-text { flex: 1; font-size: 0.95rem; margin-right: 10px; white-space: pre-wrap; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.note-actions { display: flex; gap: 8px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.note-btn { background: none; border: none; cursor: pointer; font-size: 1rem; padding: 5px; opacity: 0.6; transition: 0.2s; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.note-btn:hover { opacity: 1; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* --- Progress UI --- */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 15px; margin-bottom: 25px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.stat-box { background: #fff; padding: 20px; border-radius: 18px; text-align: center; border: 1px solid var(--border-color); box-shadow: 0 4px 10px rgba(0,0,0,0.02); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.stat-box .title { font-size: 0.8rem; font-weight: 700; color: var(--text-muted); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.stat-box .num { font-size: 1.6rem; font-weight: 800; color: var(--text-main); }</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>details { background: #fff; border: 1px solid var(--border-color); border-radius: 16px; margin-bottom: 12px; overflow: hidden; transition: box-shadow 0.2s; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>details:hover { box-shadow: 0 5px 15px rgba(0,0,0,0.04); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>summary { padding: 18px 24px; font-weight: 700; cursor: pointer; background: #fff; display: flex; align-items: center; list-style: none; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>summary::-webkit-details-marker { display: none; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>summary::before { content: "→"; font-size: 0.9rem; margin-right: 12px; transition: 0.3s; color: var(--text-muted); font-weight: 900;}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>details[open] summary::before { transform: rotate(90deg); color: var(--accent); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.details-content { padding: 20px 24px; border-top: 1px solid #f8f9fa; background: #fafafa; }</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.unit-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.unit-item { display: flex; flex-direction: column; gap: 8px; background: #fff; padding: 15px; border-radius: 12px; border: 1px solid #eee; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.unit-name { font-size: 0.9rem; font-weight: 600; color: #444;}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.status-select { padding: 6px 10px; border-radius: 8px; border: 1px solid #ddd; font-size: 0.85rem; font-weight: 600; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.status-未完成 { background: #fff; color: #adb5bd; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.status-進行中 { background: #fff9db; color: #f08c00; border-color: #ffe066; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.status-完成 { background: #ebfbee; color: #2f9e44; border-color: #b2f2bb; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* --- Gym &amp; WHV --- */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>table { width: 100%; border-collapse: collapse; margin-top: 10px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>th { font-size: 0.8rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase; padding: 12px; border-bottom: 2px solid #f1f3f5; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>td { padding: 12px; border-bottom: 1px solid #f1f3f5; text-align: center; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>td textarea { border: none; background: transparent; padding: 8px; min-height: 50px; font-size: 0.95rem;}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.check-item { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; background: #fff; padding: 12px 18px; border-radius: 14px; border: 1px solid #eee; transition: 0.2s; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.check-item:hover { border-color: #ddd; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.check-item input[type="checkbox"] { transform: scale(1.3); accent-color: var(--text-main); cursor: pointer; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.check-item .item-text { flex: 1; font-weight: 500; font-size: 0.95rem; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.check-item.completed .item-text { text-decoration: line-through; color: #adb5bd; }</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>select.badge { font-size: 0.7rem; padding: 4px 8px; border-radius: 8px; border: none; font-weight: 800; cursor: pointer; width: auto; background-image: none;}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>select.badge.high { background: #fff5f5; color: #fa5252; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>select.badge.med { background: #fff9db; color: #f08c00; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>select.badge.low { background: #ebfbee; color: #2f9e44; }</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.resource-link { display: flex; align-items: center; gap: 12px; padding: 15px; background: #fff; border: 1px solid #eee; border-radius: 16px; text-decoration: none; color: var(--text-main); margin-bottom: 10px; transition: all 0.2s; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.resource-link:hover { border-color: var(--accent); background: #fdfdfd; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.resource-link div { display: flex; flex-direction: column; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.resource-link strong { font-size: 0.95rem; font-weight: 700; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.resource-link small { color: var(--text-muted); font-size: 0.8rem; margin-top: 2px; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.budget-box { flex:1; color:white; padding:20px; border-radius:18px; text-align:center; position: relative; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.budget-box.total { background: #2d3436; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.budget-box.spent { background: #ff7675; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.budget-input { background:transparent; color:white; border:none; border-bottom: 2px solid rgba(255,255,255,0.2); font-size:1.8rem; text-align:center; font-weight:800; width:90%; outline:none; margin-top: 5px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.budget-twd { font-size: 0.85rem; margin-top: 8px; opacity: 0.7; font-weight: 600; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* Modal for adding countdown */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.modal { display:none; position:fixed; z-index:1000; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.4); backdrop-filter: blur(4px); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.modal-content { background:#fff; margin:15% auto; padding:30px; border-radius:24px; width:320px; box-shadow: 0 20px 50px rgba(0,0,0,0.2); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.modal-header { font-weight:800; font-size:1.2rem; margin-bottom:20px; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* 新增雲端同步狀態顯示 UI */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>#sync-status { position: fixed; bottom: 15px; right: 15px; font-size: 0.75rem; font-weight: 600; color: var(--text-muted); background: rgba(255,255,255,0.9); padding: 8px 14px; border-radius: 20px; pointer-events: none; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.08); border: 1px solid var(--border-color); backdrop-filter: blur(4px); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;div id="sync-status"&gt;狀態：準備就緒&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;div class="container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;header&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="header-title"&gt;BBB的AI助理&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="countdown-container" id="countdown-area"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- Initialized by JS --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="add-countdown-btn" onclick="openModal()"&gt;+ 新增倒數項目&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/header&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="tabs"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="tab-btn active" onclick="openTab('today')"&gt;今日行程&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="tab-btn" onclick="openTab('english')"&gt;英文進度&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="tab-btn" onclick="openTab('gym')"&gt;健身進度&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="tab-btn" onclick="openTab('whv')"&gt;澳洲準備&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- 1. 今日行程 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="today" class="tab-content active"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="section-title"&gt;✨ 本週概覽&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="weekly-calendar" id="weekly-calendar-container"&gt;&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="section-title" id="date-display-header"&gt;📅 今日行程&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="schedule-container" id="dynamic-schedule"&gt;&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;textarea id="today-notes" rows="2" placeholder="📝 輸入今日額外待辦事項..." style="margin-bottom: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.02);" oninput="saveData()"&gt;&lt;/textarea&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;🎯 本週 / 下週重點&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="weekly-focus-list" style="margin-bottom: 15px;"&gt;&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div style="margin-top: 20px; border-top: 1.5px dashed #f1f3f5; padding-top: 20px;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3 style="font-size: 0.95rem; margin-top:0; color: var(--text-muted);"&gt;➕ 新增行程&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="ics-form"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;input type="text" id="new-sch-title" placeholder="行程名稱" style="flex:1; min-width:120px;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;input type="date" id="new-sch-date" style="width: 140px;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;input type="time" id="new-sch-time" style="width: 110px;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button class="action-btn" onclick="addScheduleItem()" style="margin:0; background: var(--text-main);"&gt;新增&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button class="action-btn" onclick="exportScheduleICS()" style="width: 100%; margin-top: 15px; background: var(--accent);"&gt;📥 匯出顯示的行程到 Apple 行事曆 (.ics)&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;💡 AI 建議&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;ul style="margin:0; padding-left: 20px; font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;22:00 下班後，利用 Speak 練口說 15 分鐘。&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;睡前放鬆，跟寵物鳥玩一下有助於改善睡眠品質。&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;若是假日，別忘了完成一組核心健身訓練！&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- 2. 英文進度 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="english" class="tab-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="stats-row"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="stat-box"&gt;&lt;div class="title"&gt;Speak 連續&lt;/div&gt;&lt;div class="num"&gt;&lt;span id="stat-speak"&gt;0&lt;/span&gt;&lt;small style="font-size:0.8rem"&gt; 天&lt;/small&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="stat-box"&gt;&lt;div class="title"&gt;Speaking Hub&lt;/div&gt;&lt;div class="num"&gt;&lt;span id="stat-hub"&gt;0&lt;/span&gt;&lt;small style="font-size:0.8rem"&gt;/100&lt;/small&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="stat-box"&gt;&lt;div class="title"&gt;口腔瑜珈&lt;/div&gt;&lt;div class="num"&gt;&lt;span id="stat-yoga"&gt;0&lt;/span&gt;&lt;small style="font-size:0.8rem"&gt;/34&lt;/small&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="stat-box"&gt;&lt;div class="title"&gt;小綠書&lt;/div&gt;&lt;div class="num"&gt;&lt;span id="stat-green"&gt;0&lt;/span&gt;&lt;small style="font-size:0.8rem"&gt;/16&lt;/small&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;details&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;summary&gt;🎙️ Speak — 每日一課&lt;/summary&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="details-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div style="display:flex; align-items:center; gap:12px;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;input type="number" id="speak-days" value="0" style="width:100px;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span&gt;天連續&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button class="action-btn" style="margin:0; background: var(--eng-text);" onclick="document.getElementById('speak-days').value++; updateStats(); saveData()"&gt;今日完成 +1 🔥&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/details&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;details&gt;&lt;summary&gt;📚 Speaking Hub (100課)&lt;/summary&gt;&lt;div class="details-content"&gt;&lt;div class="unit-grid" id="hub-grid"&gt;&lt;/div&gt;&lt;/div&gt;&lt;/details&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;details&gt;&lt;summary&gt;🧘 英文口腔瑜珈 (34單元)&lt;/summary&gt;&lt;div class="details-content"&gt;&lt;div class="unit-grid" id="yoga-grid"&gt;&lt;/div&gt;&lt;/div&gt;&lt;/details&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;details&gt;&lt;summary&gt;📗 克雷英文小綠書 (16單元)&lt;/summary&gt;&lt;div class="details-content"&gt;&lt;div class="unit-grid" id="green-grid"&gt;&lt;/div&gt;&lt;/div&gt;&lt;/details&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- 3. 健身進度 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="gym" class="tab-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;🏋️ 每週健身紀錄&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;table&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;tr&gt;&lt;th style="width:15%"&gt;星期&lt;/th&gt;&lt;th&gt;菜單內容&lt;/th&gt;&lt;th style="width:15%"&gt;完成&lt;/th&gt;&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;tr&gt;&lt;td&gt;一&lt;/td&gt;&lt;td&gt;&lt;textarea id="gym-1" oninput="saveData()"&gt;&lt;/textarea&gt;&lt;/td&gt;&lt;td&gt;&lt;input type="checkbox" id="gym-c1" onchange="saveData()"&gt;&lt;/td&gt;&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;tr&gt;&lt;td&gt;二&lt;/td&gt;&lt;td&gt;&lt;textarea id="gym-2" oninput="saveData()"&gt;&lt;/textarea&gt;&lt;/td&gt;&lt;td&gt;&lt;input type="checkbox" id="gym-c2" onchange="saveData()"&gt;&lt;/td&gt;&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;tr&gt;&lt;td&gt;三&lt;/td&gt;&lt;td&gt;&lt;textarea id="gym-3" oninput="saveData()"&gt;&lt;/textarea&gt;&lt;/td&gt;&lt;td&gt;&lt;input type="checkbox" id="gym-c3" onchange="saveData()"&gt;&lt;/td&gt;&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;tr&gt;&lt;td&gt;四&lt;/td&gt;&lt;td&gt;&lt;textarea id="gym-4" oninput="saveData()"&gt;&lt;/textarea&gt;&lt;/td&gt;&lt;td&gt;&lt;input type="checkbox" id="gym-c4" onchange="saveData()"&gt;&lt;/td&gt;&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;tr&gt;&lt;td&gt;五&lt;/td&gt;&lt;td&gt;&lt;textarea id="gym-5" oninput="saveData()"&gt;&lt;/textarea&gt;&lt;/td&gt;&lt;td&gt;&lt;input type="checkbox" id="gym-c5" onchange="saveData()"&gt;&lt;/td&gt;&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;tr&gt;&lt;td&gt;六&lt;/td&gt;&lt;td&gt;&lt;textarea id="gym-6" oninput="saveData()"&gt;&lt;/textarea&gt;&lt;/td&gt;&lt;td&gt;&lt;input type="checkbox" id="gym-c6" onchange="saveData()"&gt;&lt;/td&gt;&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;tr&gt;&lt;td&gt;日&lt;/td&gt;&lt;td&gt;&lt;textarea id="gym-7" oninput="saveData()"&gt;&lt;/textarea&gt;&lt;/td&gt;&lt;td&gt;&lt;input type="checkbox" id="gym-c7" onchange="saveData()"&gt;&lt;/td&gt;&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/table&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- 4. 澳洲準備 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="whv" class="tab-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="whv-grid"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="card full-width"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2&gt;📋 行前準備清單&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="chk-toolbar"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;input type="text" id="new-chk-text" placeholder="輸入事項..."&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;select id="new-chk-priority" style="width:100px;"&gt;&lt;option value="High"&gt;High&lt;/option&gt;&lt;option value="Med"&gt;Med&lt;/option&gt;&lt;option value="Low"&gt;Low&lt;/option&gt;&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button class="action-btn" onclick="addWHVItem()" style="background: var(--accent);"&gt;新增&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="chk-tabs"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button class="chk-tab-btn active" onclick="setWHVFilter('pending')"&gt;未完成&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button class="chk-tab-btn" onclick="setWHVFilter('completed')"&gt;已完成&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div id="whv-checklist-container"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="card full-width"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2&gt;💰 預算與支出&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div style="display:flex; justify-content:flex-end; align-items:center; margin-bottom:15px;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;label style="font-size:0.85rem; font-weight:700;"&gt;匯率 (AUD/TWD): &lt;input type="number" id="exchange-rate" value="22.78" step="0.01" style="width:80px; padding:6px; display:inline;" oninput="calcBudget()"&gt;&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div style="display: flex; gap: 15px;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="budget-box total"&gt;&lt;div&gt;總預算 (A$)&lt;/div&gt;&lt;input type="number" id="budget-total" class="budget-input" value="0" oninput="calcBudget()"&gt;&lt;div id="budget-total-twd" class="budget-twd"&gt;≈ NT$ 0&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="budget-box spent"&gt;&lt;div&gt;已花費 (A$)&lt;/div&gt;&lt;input type="number" id="budget-spent" class="budget-input" value="0" oninput="calcBudget()"&gt;&lt;div id="budget-spent-twd" class="budget-twd"&gt;≈ NT$ 0&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div id="budget-remaining" style="margin-top:15px; font-weight:800; text-align:center; font-size:1.1rem; padding: 15px; background: #f1f3f5; border-radius: 14px;"&gt;剩餘預算: A$ 0&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="card full-width"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2&gt;🔗 實用資源&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div&gt;&lt;h3 style="font-size:0.95rem; margin-top:0;"&gt;💼 找工作&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;a href="https://www.seek.com.au" target="_blank" class="resource-link"&gt;🌐 &lt;div&gt;&lt;strong&gt;Seek.com.au&lt;/strong&gt;&lt;small&gt;最大求職平台&lt;/small&gt;&lt;/div&gt;&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;a href="https://www.backpackerjobboard.com.au" target="_blank" class="resource-link"&gt;🎒 &lt;div&gt;&lt;strong&gt;Backpacker Job Board&lt;/strong&gt;&lt;small&gt;WHV首選&lt;/small&gt;&lt;/div&gt;&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;a href="https://www.taw.com.au" target="_blank" class="resource-link"&gt;🌏 &lt;div&gt;&lt;strong&gt;Travellers at Work&lt;/strong&gt;&lt;small&gt;各類打工&lt;/small&gt;&lt;/div&gt;&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div&gt;&lt;h3 style="font-size:0.95rem; margin-top:0;"&gt;🏠 住宿&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;a href="https://flatmates.com.au" target="_blank" class="resource-link"&gt;🏡 &lt;div&gt;&lt;strong&gt;Flatmates.com.au&lt;/strong&gt;&lt;small&gt;找房必備&lt;/small&gt;&lt;/div&gt;&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;a href="https://www.gumtree.com.au" target="_blank" class="resource-link"&gt;🛋️ &lt;div&gt;&lt;strong&gt;Gumtree&lt;/strong&gt;&lt;small&gt;分租廣告&lt;/small&gt;&lt;/div&gt;&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;a href="https://www.helpx.net" target="_blank" class="resource-link"&gt;🤝 &lt;div&gt;&lt;strong&gt;HelpX&lt;/strong&gt;&lt;small&gt;換工免費&lt;/small&gt;&lt;/div&gt;&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div&gt;&lt;h3 style="font-size:0.95rem; margin-top:0;"&gt;💳 金錢簽證&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;a href="https://wise.com" target="_blank" class="resource-link"&gt;💸 &lt;div&gt;&lt;strong&gt;Wise&lt;/strong&gt;&lt;small&gt;國際匯率&lt;/small&gt;&lt;/div&gt;&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;a href="https://immi.homeaffairs.gov.au" target="_blank" class="resource-link"&gt;📋 &lt;div&gt;&lt;strong&gt;WHV Portal&lt;/strong&gt;&lt;small&gt;簽證申請&lt;/small&gt;&lt;/div&gt;&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;a href="https://www.ato.gov.au" target="_blank" class="resource-link"&gt;🔢 &lt;div&gt;&lt;strong&gt;申請 TFN&lt;/strong&gt;&lt;small&gt;稅號申請&lt;/small&gt;&lt;/div&gt;&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div&gt;&lt;h3 style="font-size:0.95rem; margin-top:0;"&gt;🚌 交通&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;a href="https://www.greyhound.com.au" target="_blank" class="resource-link"&gt;🚌 &lt;div&gt;&lt;strong&gt;Greyhound AU&lt;/strong&gt;&lt;small&gt;城際巴士&lt;/small&gt;&lt;/div&gt;&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;a href="https://www.rome2rio.com" target="_blank" class="resource-link"&gt;🗺️ &lt;div&gt;&lt;strong&gt;Rome2Rio&lt;/strong&gt;&lt;small&gt;路線比較&lt;/small&gt;&lt;/div&gt;&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;a href="https://www.gumtree.com.au" target="_blank" class="resource-link"&gt;🚐 &lt;div&gt;&lt;strong&gt;Buy a Van&lt;/strong&gt;&lt;small&gt;買車/露營車&lt;/small&gt;&lt;/div&gt;&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="card full-width"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2&gt;🏠 工作與住宿筆記&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div style="display: flex; gap: 10px; margin-bottom: 15px;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;input type="text" id="new-house-text" placeholder="輸入工作與住宿筆記..." style="flex:1;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button class="action-btn" onclick="addHouseItem()" style="background: var(--accent);"&gt;新增&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div id="house-list-container"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="card full-width"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2&gt;🗺️ 旅行計畫&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div style="display: flex; gap: 10px; margin-bottom: 15px;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;input type="text" id="new-travel-text" placeholder="輸入旅行計畫..." style="flex:1;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button class="action-btn" onclick="addTravelItem()" style="background: var(--accent);"&gt;新增&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div id="travel-list-container"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;!-- Countdown Modal --&gt;</p>
+<p class="p1">&lt;div id="countdown-modal" class="modal"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="modal-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="modal-header" id="modal-title"&gt;設定倒數項目&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;input type="text" id="new-cd-name" placeholder="項目名稱 (如: 澳洲出發)" style="margin-bottom:12px;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;input type="date" id="new-cd-date" style="margin-bottom:20px;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div style="display:flex; gap:10px;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="action-btn" id="modal-save-btn" onclick="saveCountdown()" style="flex:1; background: var(--accent);"&gt;儲存&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="action-btn" onclick="closeModal()" style="flex:1; background: #eee; color:#666;"&gt;取消&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* =======================================================</p>
+<p class="p1"><span class="Apple-converted-space">       </span>核心雲端同步設定 (請務必將下方的網址換成你的 Google Apps Script 網址)<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">       </span>======================================================= */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const SCRIPT_URL = '請在此貼上你的GoogleAppsScript網址';<span class="Apple-converted-space"> </span></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>const STORAGE_KEY = 'bbb_ai_dashboard_v3';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const GREEN_BOOK_UNITS = ["Unit 1 認識新朋友", "Unit 2 家庭與生活", "Unit 3 餐廳點餐", "Unit 4 購物消費", "Unit 5 旅行出遊", "Unit 6 交通移動", "Unit 7 健康醫療", "Unit 8 工作職場", "Unit 9 居家住宿", "Unit 10 天氣環境", "Unit 11 興趣娛樂", "Unit 12 電話網路", "Unit 13 學校教育", "Unit 14 感情社交", "Unit 15 問路指引", "Unit 16 緊急狀況"];</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const YOGA_UNITS = ["Intro", "M1U1", "M1U2-1", "M1U2-2", "M1U2-3", "M1U3-1", "M1U3-2", "M1U3-3", "M1U3-4", "M2U1-1", "M2U1-2", "M2U1-3", "M2U1-4", "M2U1 ex", "M2U2", "M2U2 ex", "M2U3", "M2U3 ex", "M2U4-1", "M2U4-2", "M2U4 ex", "M2U5", "M2U5 ex", "M3U1", "M3U2", "M3U3-1", "M3U3-2", "M3U4-1", "M3U4-2", "M3U4-3", "M4U1-1", "M4U1-2", "M4U2", "M4U3"];</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>let whvItems = [];</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let currentWHVFilter = 'pending';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let countdowns = [{ id: 'whv_default', name: 'WHV 澳洲 🇦🇺', date: '2027-04-01' }];</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let editingCountdownId = null;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let scheduleItems = [];</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// 筆記與計畫清單陣列</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let houseItems = [];</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let travelItems = [];</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// 預設四堂駕訓課</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const DEFAULT_SCHEDULE = [</p>
+<p class="p1"><span class="Apple-converted-space">        </span>{ id: 11, title: '道路駕駛', date: '2026-05-11', time: '14:00' },</p>
+<p class="p1"><span class="Apple-converted-space">        </span>{ id: 12, title: '道路駕駛', date: '2026-05-13', time: '14:00' },</p>
+<p class="p1"><span class="Apple-converted-space">        </span>{ id: 13, title: '道路駕駛練習', date: '2026-05-18', time: '10:00' },</p>
+<p class="p1"><span class="Apple-converted-space">        </span>{ id: 14, title: '道路駕駛練習', date: '2026-05-20', time: '10:00' }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>];</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>async function init() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>renderToday();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>renderEnglishGrids();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>await loadData(); // 加上 await 等待讀取完成</p>
+<p class="p1"><span class="Apple-converted-space">        </span>updateCountdowns();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>setInterval(updateCountdowns, 60000);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function openTab(tabId) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.querySelectorAll('.tab-content').forEach(c =&gt; c.classList.remove('active'));</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.querySelectorAll('.tab-btn').forEach(b =&gt; b.classList.remove('active'));</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById(tabId).classList.add('active');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>event.currentTarget.classList.add('active');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function updateCountdowns() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const container = document.getElementById('countdown-area');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>container.innerHTML = countdowns.map(c =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const diff = new Date(c.date) - new Date();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const days = Math.ceil(diff / (1000 * 60 * 60 * 24));</p>
+<p class="p1"><span class="Apple-converted-space">            </span>return `</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="countdown-item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div&gt;&lt;div class="countdown-label"&gt;${c.name}&lt;/div&gt;&lt;div class="countdown-value"&gt;${days} 天&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="countdown-actions"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="countdown-btn" onclick="openModal('${c.id}')"&gt;✏️&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>${c.id !== 'whv_default' ? `&lt;span class="countdown-btn" style="color:#ff7675" onclick="deleteCountdown('${c.id}')"&gt;✕&lt;/span&gt;` : ''}</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}).join('');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function openModal(id = null) {<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>editingCountdownId = id;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (id) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const c = countdowns.find(x =&gt; x.id === id);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('new-cd-name').value = c.name;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('new-cd-date').value = c.date;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('modal-title').innerText = "編輯倒數項目";</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('modal-save-btn').innerText = "儲存";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('new-cd-name').value = '';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('new-cd-date').value = '';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('modal-title').innerText = "新增倒數項目";</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('modal-save-btn').innerText = "新增";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('countdown-modal').style.display = 'block';<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function closeModal() { document.getElementById('countdown-modal').style.display = 'none'; }</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function saveCountdown() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const name = document.getElementById('new-cd-name').value.trim();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const date = document.getElementById('new-cd-date').value;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (!name || !date) return;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (editingCountdownId) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const c = countdowns.find(x =&gt; x.id === editingCountdownId);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (c) { c.name = name; c.date = date; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>countdowns.push({ id: Date.now().toString(), name, date });</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>closeModal(); saveData(); updateCountdowns();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function deleteCountdown(id) { countdowns = countdowns.filter(c =&gt; c.id !== id); saveData(); updateCountdowns(); }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function renderToday() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const now = new Date();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const currentDay = now.getDay();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const startOfWeek = new Date(now);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>startOfWeek.setDate(now.getDate() - currentDay);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const daysNames = ["日", "一", "二", "三", "四", "五", "六"];</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let weekHtml = '';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>for(let i=0; i&lt;7; i++) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>let d = new Date(startOfWeek); d.setDate(d.getDate() + i);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>let isToday = (d.getDate() === now.getDate() &amp;&amp; d.getMonth() === now.getMonth());</p>
+<p class="p1"><span class="Apple-converted-space">            </span>let dotsHtml = (i===0 || i===6) ? '&lt;div class="dot gym"&gt;&lt;/div&gt;' : '&lt;div class="dot work"&gt;&lt;/div&gt;&lt;div class="dot eng"&gt;&lt;/div&gt;';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>weekHtml += `&lt;div class="day-card ${isToday ? 'active' : ''}"&gt;&lt;div class="day-name"&gt;${daysNames[i]}&lt;/div&gt;&lt;div class="dots"&gt;${dotsHtml}&lt;/div&gt;&lt;div class="day-date"&gt;${d.getDate()}&lt;/div&gt;&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('weekly-calendar-container').innerHTML = weekHtml;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const isWeekend = currentDay === 0 || currentDay === 6;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('date-display-header').innerText = `📅 今日行程 (${isWeekend ? '假日' : '平日'})`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const scheduleBox = document.getElementById('dynamic-schedule');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (isWeekend) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>scheduleBox.innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="schedule-row"&gt;&lt;div class="time-col"&gt;彈性&lt;/div&gt;&lt;div class="task-col"&gt;假日自由安排 &lt;span class="tag plan"&gt;計畫&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="schedule-row"&gt;&lt;div class="time-col"&gt;隨時&lt;/div&gt;&lt;div class="task-col"&gt;Speak 英文課 &lt;span class="tag eng"&gt;英文&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="schedule-row"&gt;&lt;div class="time-col"&gt;建議&lt;/div&gt;&lt;div class="task-col"&gt;健身訓練 &lt;span class="tag gym"&gt;健身&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>scheduleBox.innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="schedule-row"&gt;&lt;div class="time-col"&gt;08:30&lt;/div&gt;&lt;div class="task-col"&gt;起床通勤&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="schedule-row"&gt;&lt;div class="time-col"&gt;09:00&lt;/div&gt;&lt;div class="task-col"&gt;公司上班 &lt;span class="tag work"&gt;工作&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="schedule-row"&gt;&lt;div class="time-col"&gt;19:00&lt;/div&gt;&lt;div class="task-col"&gt;居家接案 &lt;span class="tag work"&gt;工作&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="schedule-row"&gt;&lt;div class="time-col"&gt;22:00&lt;/div&gt;&lt;div class="task-col"&gt;Speak 英文 / 休息 &lt;span class="tag eng"&gt;英文&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// --- Schedule Management System ---</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function renderSchedule() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const listContainer = document.getElementById('weekly-focus-list');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const now = new Date();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const startOfWeek = new Date(now);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>startOfWeek.setDate(now.getDate() - now.getDay());</p>
+<p class="p1"><span class="Apple-converted-space">        </span>startOfWeek.setHours(0,0,0,0);</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const endOfNextWeek = new Date(startOfWeek);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>endOfNextWeek.setDate(startOfWeek.getDate() + 13);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>endOfNextWeek.setHours(23,59,59,999);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>let filtered = scheduleItems.filter(item =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const itemDate = new Date(`${item.date}T${item.time || '00:00'}`);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>return itemDate &gt;= startOfWeek &amp;&amp; itemDate &lt;= endOfNextWeek;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>filtered.sort((a, b) =&gt; new Date(`${a.date}T${a.time || '00:00'}`) - new Date(`${b.date}T${b.time || '00:00'}`));</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (filtered.length === 0) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>listContainer.innerHTML = '&lt;div style="color:var(--text-muted); font-size:1rem; padding: 15px 0; text-align: center; background: #f8f9fa; border-radius: 12px; border: 1px dashed #ccc;"&gt;無重點行程&lt;/div&gt;';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>listContainer.innerHTML = filtered.map(item =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const d = new Date(item.date);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const dateStr = `${d.getMonth()+1}/${d.getDate()} ${item.time !== '00:00' ? item.time : ''}`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>return `</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="schedule-item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span class="tag date" style="margin-right:8px;"&gt;${dateStr}&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;strong style="color:var(--text-main); font-size:1rem;"&gt;${item.title}&lt;/strong&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button style="background:none; border:none; color:#ff7675; cursor:pointer; font-size:1.1rem; padding:5px; margin:0;" onclick="deleteScheduleItem(${item.id})"&gt;✕&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>`}).join('');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function addScheduleItem() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const title = document.getElementById('new-sch-title').value.trim();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const date = document.getElementById('new-sch-date').value;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const time = document.getElementById('new-sch-time').value || '00:00';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (!title || !date) return alert('請輸入行程名稱與日期！');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>scheduleItems.push({ id: Date.now(), title, date, time });</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('new-sch-title').value = '';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>saveData();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>renderSchedule();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function deleteScheduleItem(id) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>scheduleItems = scheduleItems.filter(i =&gt; i.id !== id);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>saveData();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>renderSchedule();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function exportScheduleICS() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const now = new Date();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const startOfWeek = new Date(now);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>startOfWeek.setDate(now.getDate() - now.getDay());</p>
+<p class="p1"><span class="Apple-converted-space">        </span>startOfWeek.setHours(0,0,0,0);</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const endOfNextWeek = new Date(startOfWeek);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>endOfNextWeek.setDate(startOfWeek.getDate() + 13);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>endOfNextWeek.setHours(23,59,59,999);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>let filtered = scheduleItems.filter(item =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const itemDate = new Date(`${item.date}T${item.time || '00:00'}`);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>return itemDate &gt;= startOfWeek &amp;&amp; itemDate &lt;= endOfNextWeek;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (filtered.length === 0) return alert('本週/下週沒有行程可匯出！');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>let icsContent = `BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//BBB AI Assistant//EN`;</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>filtered.forEach(item =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const startStr = item.date.replace(/-/g, '') + 'T' + item.time.replace(':', '') + '00';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>let endDate = new Date(`${item.date}T${item.time}`);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>endDate.setHours(endDate.getHours() + 1);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const endMonth = String(endDate.getMonth() + 1).padStart(2, '0');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const endDay = String(endDate.getDate()).padStart(2, '0');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const endHour = String(endDate.getHours()).padStart(2, '0');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const endMin = String(endDate.getMinutes()).padStart(2, '0');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const endStr = `${endDate.getFullYear()}${endMonth}${endDay}T${endHour}${endMin}00`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>icsContent += `\nBEGIN:VEVENT\nDTSTART:${startStr}\nDTEND:${endStr}\nSUMMARY:${item.title}\nEND:VEVENT`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>icsContent += `\nEND:VCALENDAR`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const link = document.createElement('a');<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>link.href = window.URL.createObjectURL(blob);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>link.setAttribute('download', `本週下週行程.ics`);<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.body.appendChild(link);<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>link.click();<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.body.removeChild(link);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function calcBudget() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const rate = parseFloat(document.getElementById('exchange-rate').value) || 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const totalAud = parseFloat(document.getElementById('budget-total').value) || 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const spentAud = parseFloat(document.getElementById('budget-spent').value) || 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('budget-total-twd').innerText = `≈ NT$ ${Math.round(totalAud * rate).toLocaleString()}`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('budget-spent-twd').innerText = `≈ NT$ ${Math.round(spentAud * rate).toLocaleString()}`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('budget-remaining').innerText = `剩餘預算: A$ ${(totalAud - spentAud).toLocaleString()}`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>saveData();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function renderEnglishGrids() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('green-grid').innerHTML = GREEN_BOOK_UNITS.map((u, i) =&gt; createUnitItem('green', i, u)).join('');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('yoga-grid').innerHTML = YOGA_UNITS.map((u, i) =&gt; createUnitItem('yoga', i, u)).join('');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let hubHtml = ''; for(let u=1; u&lt;=20; u++) { for(let l=1; l&lt;=5; l++) { hubHtml += createUnitItem('hub', (u-1)*5 + l-1, `${u}-${l} Lesson`); } }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('hub-grid').innerHTML = hubHtml;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function createUnitItem(prefix, index, name) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>return `&lt;div class="unit-item"&gt;&lt;span class="unit-name"&gt;${name}&lt;/span&gt;&lt;select id="${prefix}-sel-${index}" class="status-select status-未完成" onchange="updateSelectColor(this); updateStats(); saveData()"&gt;&lt;option value="未完成"&gt;未完成&lt;/option&gt;&lt;option value="進行中"&gt;進行中&lt;/option&gt;&lt;option value="完成"&gt;完成&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function updateSelectColor(selectObj) { selectObj.className = `status-select status-${selectObj.value}`; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function updateStats() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('stat-speak').innerText = document.getElementById('speak-days').value || 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let hubC = 0; for(let i=0; i&lt;100; i++) if(document.getElementById(`hub-sel-${i}`)?.value === '完成') hubC++;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('stat-hub').innerText = hubC;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let yogaC = 0; for(let i=0; i&lt;YOGA_UNITS.length; i++) if(document.getElementById(`yoga-sel-${i}`)?.value === '完成') yogaC++;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('stat-yoga').innerText = yogaC;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let greenC = 0; for(let i=0; i&lt;GREEN_BOOK_UNITS.length; i++) if(document.getElementById(`green-sel-${i}`)?.value === '完成') greenC++;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('stat-green').innerText = greenC;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function setWHVFilter(f) { currentWHVFilter = f; document.querySelectorAll('.chk-tab-btn').forEach(b =&gt; b.classList.remove('active')); event.currentTarget.classList.add('active'); renderWHVChecklist(); }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function renderWHVChecklist() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const filtered = whvItems.filter(item =&gt; currentWHVFilter === 'completed' ? item.completed : !item.completed);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('whv-checklist-container').innerHTML = filtered.map(item =&gt; `</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="check-item ${item.completed ? 'completed' : ''}"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;input type="checkbox" ${item.completed ? 'checked' : ''} onchange="toggleWHVItem(${item.id}, this.checked)"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="item-text"&gt;${item.text}&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;select class="badge ${item.priority.toLowerCase()}" onchange="updateWHVPriority(${item.id}, this.value)"&gt;&lt;option value="High" ${item.priority === 'High' ? 'selected' : ''}&gt;High&lt;/option&gt;&lt;option value="Med" ${item.priority === 'Med' ? 'selected' : ''}&gt;Med&lt;/option&gt;&lt;option value="Low" ${item.priority === 'Low' ? 'selected' : ''}&gt;Low&lt;/option&gt;&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button style="background:none;border:none;cursor:pointer;color:#ff7675" onclick="deleteWHVItem(${item.id})"&gt;✕&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>`).join('');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function addWHVItem() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const text = document.getElementById('new-chk-text').value.trim();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const p = document.getElementById('new-chk-priority').value;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (!text) return; whvItems.push({ id: Date.now(), text, priority: p, completed: false });</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('new-chk-text').value = ''; saveData(); renderWHVChecklist();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function toggleWHVItem(id, c) { const i = whvItems.find(x =&gt; x.id === id); if(i) i.completed = c; saveData(); renderWHVChecklist(); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function updateWHVPriority(id, p) { const i = whvItems.find(x =&gt; x.id === id); if(i) i.priority = p; saveData(); renderWHVChecklist(); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function deleteWHVItem(id) { whvItems = whvItems.filter(x =&gt; x.id !== id); saveData(); renderWHVChecklist(); }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* --- 筆記與旅行計畫清單功能 --- */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function renderHouseItems() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('house-list-container').innerHTML = houseItems.map(item =&gt; `</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="note-item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="note-item-text"&gt;${item.text}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="note-actions"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button class="note-btn" onclick="editHouseItem(${item.id})"&gt;✏️&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button class="note-btn" style="color:#ff7675;" onclick="deleteHouseItem(${item.id})"&gt;✕&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>`).join('');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function addHouseItem() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const text = document.getElementById('new-house-text').value.trim();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if(!text) return;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>houseItems.push({ id: Date.now(), text });</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('new-house-text').value = '';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>saveData(); renderHouseItems();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function editHouseItem(id) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const item = houseItems.find(x =&gt; x.id === id);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if(!item) return;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const newText = prompt("編輯工作與住宿筆記:", item.text);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if(newText !== null &amp;&amp; newText.trim() !== '') { item.text = newText.trim(); saveData(); renderHouseItems(); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function deleteHouseItem(id) { houseItems = houseItems.filter(x =&gt; x.id !== id); saveData(); renderHouseItems(); }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function renderTravelItems() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('travel-list-container').innerHTML = travelItems.map(item =&gt; `</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="note-item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="note-item-text"&gt;${item.text}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="note-actions"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button class="note-btn" onclick="editTravelItem(${item.id})"&gt;✏️&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button class="note-btn" style="color:#ff7675;" onclick="deleteTravelItem(${item.id})"&gt;✕&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>`).join('');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function addTravelItem() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const text = document.getElementById('new-travel-text').value.trim();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if(!text) return;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>travelItems.push({ id: Date.now(), text });</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('new-travel-text').value = '';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>saveData(); renderTravelItems();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function editTravelItem(id) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const item = travelItems.find(x =&gt; x.id === id);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if(!item) return;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const newText = prompt("編輯旅行計畫:", item.text);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if(newText !== null &amp;&amp; newText.trim() !== '') { item.text = newText.trim(); saveData(); renderTravelItems(); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function deleteTravelItem(id) { travelItems = travelItems.filter(x =&gt; x.id !== id); saveData(); renderTravelItems(); }</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* =======================================================</p>
+<p class="p1"><span class="Apple-converted-space">       </span>更新版資料儲存邏輯 (包含防抖與雙重備份機制)</p>
+<p class="p1"><span class="Apple-converted-space">       </span>======================================================= */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let saveTimeout;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function saveData() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>// 1. 準備好要存的資料包</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const data = {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>todayNotes: document.getElementById('today-notes').value,<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>speakDays: document.getElementById('speak-days').value, hub: [], yoga: [], green: [], gym: {}, whvList: whvItems, countdowns, scheduleItems,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>budgetTotal: document.getElementById('budget-total').value, budgetSpent: document.getElementById('budget-spent').value, exchangeRate: document.getElementById('exchange-rate').value, houseItems, travelItems</p>
+<p class="p1"><span class="Apple-converted-space">        </span>};</p>
+<p class="p1"><span class="Apple-converted-space">        </span>for(let i=0; i&lt;100; i++) data.hub.push(document.getElementById(`hub-sel-${i}`)?.value || '未完成');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>for(let i=0; i&lt;YOGA_UNITS.length; i++) data.yoga.push(document.getElementById(`yoga-sel-${i}`)?.value || '未完成');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>for(let i=0; i&lt;GREEN_BOOK_UNITS.length; i++) data.green.push(document.getElementById(`green-sel-${i}`)?.value || '未完成');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>for(let i=1; i&lt;=7; i++) { data.gym[`text${i}`] = document.getElementById(`gym-${i}`).value; data.gym[`check${i}`] = document.getElementById(`gym-c${i}`).checked; }</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// 2. 先存一份在本地保底</p>
+<p class="p1"><span class="Apple-converted-space">        </span>localStorage.setItem(STORAGE_KEY, JSON.stringify(data));</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// 3. 觸發雲端同步 (加上防抖機制，延遲 1.5 秒送出)</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('sync-status').innerText = "🔄 雲端同步中...";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>clearTimeout(saveTimeout);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>saveTimeout = setTimeout(async () =&gt; {</p>
+<p class="p3"><span class="s1"><span class="Apple-converted-space">            </span>if (SCRIPT_URL === '</span><span class="s2">https://script.google.com/macros/s/AKfycbwTRyGos7gfFcbUle6vxghVxlGNfdB-CyEQY8JGuQOtB8JB4B-gPx82l5_VwDGg4T6jGw/exec</span></p>
+<p class="p1">' || !SCRIPT_URL) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('sync-status').innerText = "⚠️ 僅存檔於設備 (尚未設定雲端網址)";</p>
+<p class="p1"><span class="Apple-converted-space">                </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>await fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify(data) });</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('sync-status').innerText = "✅ 雲端已備份";</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} catch (e) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('sync-status').innerText = "❌ 雲端同步失敗";</p>
+<p class="p1"><span class="Apple-converted-space">                </span>console.error(e);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}, 1500);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* =======================================================</p>
+<p class="p1"><span class="Apple-converted-space">       </span>更新版資料讀取邏輯 (優先讀取雲端)</p>
+<p class="p1"><span class="Apple-converted-space">       </span>======================================================= */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>async function loadData() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('sync-status').innerText = "⏳ 讀取雲端資料中...";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let dataToLoad = null;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// 嘗試從雲端讀取</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (SCRIPT_URL !== '請在此貼上你的GoogleAppsScript網址' &amp;&amp; SCRIPT_URL) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const response = await fetch(SCRIPT_URL);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>dataToLoad = await response.json();</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('sync-status').innerText = "✅ 已載入雲端資料";</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} catch (e) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>console.error('雲端讀取失敗', e);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('sync-status').innerText = "⚠️ 雲端失敗，使用設備舊資料";</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('sync-status').innerText = "⚠️ 尚未設定雲端網址";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// 如果雲端沒資料或讀取失敗，改用本地舊資料</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (!dataToLoad) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const saved = localStorage.getItem(STORAGE_KEY);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (saved) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>dataToLoad = JSON.parse(saved);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// 應用資料到畫面</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (dataToLoad) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('today-notes').value = dataToLoad.todayNotes || '';<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('speak-days').value = dataToLoad.speakDays || 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('budget-total').value = dataToLoad.budgetTotal || 0; document.getElementById('budget-spent').value = dataToLoad.budgetSpent || 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('exchange-rate').value = dataToLoad.exchangeRate || 22.78; calcBudget();</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// 舊資料相容轉換</p>
+<p class="p1"><span class="Apple-converted-space">            </span>houseItems = dataToLoad.houseItems || (dataToLoad.house ? [{id: Date.now(), text: dataToLoad.house}] : []);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>travelItems = dataToLoad.travelItems || (dataToLoad.travel ? [{id: Date.now()+1, text: dataToLoad.travel}] : []);</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (dataToLoad.countdowns) countdowns = dataToLoad.countdowns;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (dataToLoad.scheduleItems) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>scheduleItems = dataToLoad.scheduleItems;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>scheduleItems = [...DEFAULT_SCHEDULE];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (dataToLoad.hub) dataToLoad.hub.forEach((v, i) =&gt; { let el = document.getElementById(`hub-sel-${i}`); if(el) { el.value = v; updateSelectColor(el); } });</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (dataToLoad.yoga) dataToLoad.yoga.forEach((v, i) =&gt; { let el = document.getElementById(`yoga-sel-${i}`); if(el) { el.value = v; updateSelectColor(el); } });</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (dataToLoad.green) dataToLoad.green.forEach((v, i) =&gt; { let el = document.getElementById(`green-sel-${i}`); if(el) { el.value = v; updateSelectColor(el); } });</p>
+<p class="p1"><span class="Apple-converted-space">            </span>whvItems = dataToLoad.whvList || [];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (dataToLoad.gym) { for(let i=1; i&lt;=7; i++) { let t = document.getElementById(`gym-${i}`); let c = document.getElementById(`gym-c${i}`); if(t) t.value = dataToLoad.gym[`text${i}`] || ''; if(c) c.checked = dataToLoad.gym[`check${i}`] || false; } }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>scheduleItems = [...DEFAULT_SCHEDULE];</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>renderWHVChecklist(); updateStats(); updateCountdowns(); renderSchedule();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>renderHouseItems(); renderTravelItems();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>window.onload = init;</p>
+<p class="p1">&lt;/script&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
