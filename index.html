@@ -532,9 +532,9 @@
 
 <script>
     /* =======================================================
-       核心雲端同步設定 (請務必將下方的網址換成你的 Google Apps Script 網址) 
+       這是幫你完美嵌入好網址的終極版！
        ======================================================= */
-    const SCRIPT_URL = '[https://script.google.com/macros/s/AKfycbwTRyGos7gfFcbUle6vxghVxlGNfdB-CyEQY8JGuQOtB8JB4B-gPx82l5_VwDGg4T6jGw/exec)'; 
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwTRyGos7gfFcbUle6vxghVxlGNfdB-CyEQY8JGuQOtB8JB4B-gPx82l5_VwDGg4T6jGw/exec'; 
 
     const STORAGE_KEY = 'bbb_ai_dashboard_v3';
     const GREEN_BOOK_UNITS = ["Unit 1 認識新朋友", "Unit 2 家庭與生活", "Unit 3 餐廳點餐", "Unit 4 購物消費", "Unit 5 旅行出遊", "Unit 6 交通移動", "Unit 7 健康醫療", "Unit 8 工作職場", "Unit 9 居家住宿", "Unit 10 天氣環境", "Unit 11 興趣娛樂", "Unit 12 電話網路", "Unit 13 學校教育", "Unit 14 感情社交", "Unit 15 問路指引", "Unit 16 緊急狀況"];
@@ -889,8 +889,7 @@
         document.getElementById('sync-status').innerText = "🔄 雲端同步中...";
         clearTimeout(saveTimeout);
         saveTimeout = setTimeout(async () => {
-            if (SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbwTRyGos7gfFcbUle6vxghVxlGNfdB-CyEQY8JGuQOtB8JB4B-gPx82l5_VwDGg4T6jGw/exec
-' || !SCRIPT_URL) {
+            if (!SCRIPT_URL) {
                 document.getElementById('sync-status').innerText = "⚠️ 僅存檔於設備 (尚未設定雲端網址)";
                 return;
             }
@@ -912,7 +911,7 @@
         let dataToLoad = null;
 
         // 嘗試從雲端讀取
-        if (SCRIPT_URL !== '請在此貼上你的GoogleAppsScript網址' && SCRIPT_URL) {
+        if (SCRIPT_URL) {
             try {
                 const response = await fetch(SCRIPT_URL);
                 dataToLoad = await response.json();
