@@ -358,10 +358,11 @@
     </header>
 
     <div class="tabs">
-        <button class="tab-btn active" onclick="openTab('today')">今日行程</button>
-        <button class="tab-btn" onclick="openTab('english')">英文進度</button>
-        <button class="tab-btn" onclick="openTab('gym')">健身進度</button>
-        <button class="tab-btn" onclick="openTab('whv')">澳洲準備</button>
+        <!-- 【修復重點】這裡改成傳入 this，避開 Safari 專屬的地雷 -->
+        <button class="tab-btn active" onclick="openTab('today', this)">今日行程</button>
+        <button class="tab-btn" onclick="openTab('english', this)">英文進度</button>
+        <button class="tab-btn" onclick="openTab('gym', this)">健身進度</button>
+        <button class="tab-btn" onclick="openTab('whv', this)">澳洲準備</button>
     </div>
 
     <!-- 1. 今日行程 -->
@@ -452,8 +453,9 @@
                     <button class="action-btn" onclick="addWHVItem()" style="background: var(--accent);">新增</button>
                 </div>
                 <div class="chk-tabs">
-                    <button class="chk-tab-btn active" onclick="setWHVFilter('pending')">未完成</button>
-                    <button class="chk-tab-btn" onclick="setWHVFilter('completed')">已完成</button>
+                    <!-- 【修復重點】這裡改成傳入 this -->
+                    <button class="chk-tab-btn active" onclick="setWHVFilter('pending', this)">未完成</button>
+                    <button class="chk-tab-btn" onclick="setWHVFilter('completed', this)">已完成</button>
                 </div>
                 <div id="whv-checklist-container"></div>
             </div>
@@ -532,7 +534,7 @@
 
 <script>
     /* =======================================================
-       這是幫你完美嵌入好網址的終極版！
+       Google 雲端網址已正確設定
        ======================================================= */
     const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwTRyGos7gfFcbUle6vxghVxlGNfdB-CyEQY8JGuQOtB8JB4B-gPx82l5_VwDGg4T6jGw/exec'; 
 
@@ -566,11 +568,12 @@
         setInterval(updateCountdowns, 60000);
     }
 
-    function openTab(tabId) {
+    // 【修復重點】移除 event，改用 btnElement 接收按鈕本身
+    function openTab(tabId, btnElement) {
         document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
         document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
         document.getElementById(tabId).classList.add('active');
-        event.currentTarget.classList.add('active');
+        if (btnElement) btnElement.classList.add('active');
     }
 
     function updateCountdowns() {
@@ -789,7 +792,13 @@
         document.getElementById('stat-green').innerText = greenC;
     }
 
-    function setWHVFilter(f) { currentWHVFilter = f; document.querySelectorAll('.chk-tab-btn').forEach(b => b.classList.remove('active')); event.currentTarget.classList.add('active'); renderWHVChecklist(); }
+    // 【修復重點】同樣移除這裡的 event，改用 btnElement 接收按鈕
+    function setWHVFilter(f, btnElement) { 
+        currentWHVFilter = f; 
+        document.querySelectorAll('.chk-tab-btn').forEach(b => b.classList.remove('active')); 
+        if (btnElement) btnElement.classList.add('active');
+        renderWHVChecklist(); 
+    }
 
     function renderWHVChecklist() {
         const filtered = whvItems.filter(item => currentWHVFilter === 'completed' ? item.completed : !item.completed);
@@ -867,11 +876,10 @@
     function deleteTravelItem(id) { travelItems = travelItems.filter(x => x.id !== id); saveData(); renderTravelItems(); }
     
     /* =======================================================
-       更新版資料儲存邏輯 (包含防抖與雙重備份機制)
+       【修復重點】加入 mode: 'no-cors'，強制突破 Google 的安全攔截
        ======================================================= */
     let saveTimeout;
     function saveData() {
-        // 1. 準備好要存的資料包
         const data = {
             todayNotes: document.getElementById('today-notes').value, 
             speakDays: document.getElementById('speak-days').value, hub: [], yoga: [], green: [], gym: {}, whvList: whvItems, countdowns, scheduleItems,
@@ -882,49 +890,49 @@
         for(let i=0; i<GREEN_BOOK_UNITS.length; i++) data.green.push(document.getElementById(`green-sel-${i}`)?.value || '未完成');
         for(let i=1; i<=7; i++) { data.gym[`text${i}`] = document.getElementById(`gym-${i}`).value; data.gym[`check${i}`] = document.getElementById(`gym-c${i}`).checked; }
         
-        // 2. 先存一份在本地保底
+        // 1. 保證設備本身一定存得到
         localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
 
-        // 3. 觸發雲端同步 (加上防抖機制，延遲 1.5 秒送出)
+        // 2. 雲端雙重備份 (加入 no-cors 模式)
         document.getElementById('sync-status').innerText = "🔄 雲端同步中...";
         clearTimeout(saveTimeout);
-        saveTimeout = setTimeout(async () => {
-            if (!SCRIPT_URL) {
-                document.getElementById('sync-status').innerText = "⚠️ 僅存檔於設備 (尚未設定雲端網址)";
-                return;
-            }
-            try {
-                await fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify(data) });
+        saveTimeout = setTimeout(() => {
+            if (!SCRIPT_URL) return;
+            fetch(SCRIPT_URL, { 
+                method: 'POST', 
+                mode: 'no-cors', // 這是讓手機 Safari 不會被 Google 擋下來的關鍵
+                headers: { 'Content-Type': 'text/plain' },
+                body: JSON.stringify(data) 
+            }).then(() => {
                 document.getElementById('sync-status').innerText = "✅ 雲端已備份";
-            } catch (e) {
+            }).catch(e => {
                 document.getElementById('sync-status').innerText = "❌ 雲端同步失敗";
                 console.error(e);
-            }
+            });
         }, 1500);
     }
 
     /* =======================================================
-       更新版資料讀取邏輯 (優先讀取雲端)
+       更新版資料讀取邏輯 (加上嚴謹的錯誤捕捉)
        ======================================================= */
     async function loadData() {
         document.getElementById('sync-status').innerText = "⏳ 讀取雲端資料中...";
         let dataToLoad = null;
 
-        // 嘗試從雲端讀取
         if (SCRIPT_URL) {
             try {
                 const response = await fetch(SCRIPT_URL);
-                dataToLoad = await response.json();
-                document.getElementById('sync-status').innerText = "✅ 已載入雲端資料";
+                const textData = await response.text(); // 先轉成純文字，避免直接 json() 當機
+                if (textData) {
+                    dataToLoad = JSON.parse(textData);
+                    document.getElementById('sync-status').innerText = "✅ 已載入雲端資料";
+                }
             } catch (e) {
                 console.error('雲端讀取失敗', e);
-                document.getElementById('sync-status').innerText = "⚠️ 雲端失敗，使用設備舊資料";
+                document.getElementById('sync-status').innerText = "⚠️ 讀取失敗，使用本機資料";
             }
-        } else {
-            document.getElementById('sync-status').innerText = "⚠️ 尚未設定雲端網址";
         }
 
-        // 如果雲端沒資料或讀取失敗，改用本地舊資料
         if (!dataToLoad) {
             const saved = localStorage.getItem(STORAGE_KEY);
             if (saved) {
@@ -932,14 +940,12 @@
             }
         }
 
-        // 應用資料到畫面
         if (dataToLoad) {
             document.getElementById('today-notes').value = dataToLoad.todayNotes || ''; 
             document.getElementById('speak-days').value = dataToLoad.speakDays || 0;
             document.getElementById('budget-total').value = dataToLoad.budgetTotal || 0; document.getElementById('budget-spent').value = dataToLoad.budgetSpent || 0;
             document.getElementById('exchange-rate').value = dataToLoad.exchangeRate || 22.78; calcBudget();
             
-            // 舊資料相容轉換
             houseItems = dataToLoad.houseItems || (dataToLoad.house ? [{id: Date.now(), text: dataToLoad.house}] : []);
             travelItems = dataToLoad.travelItems || (dataToLoad.travel ? [{id: Date.now()+1, text: dataToLoad.travel}] : []);
             
